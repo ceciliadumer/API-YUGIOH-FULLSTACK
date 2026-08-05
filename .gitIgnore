@@ -1,0 +1,15 @@
+# Ignorar arquivos compilados
+*.class
+*.exe
+*.dll
+
+# Ignorar pastas de dependências
+node_modules/
+
+
+# Ignorar arquivos de sistema/OS
+.DS_Store
+Thumbs.db
+
+# Ignorar arquivos de configuração sensíveis ou de ambiente
+.env

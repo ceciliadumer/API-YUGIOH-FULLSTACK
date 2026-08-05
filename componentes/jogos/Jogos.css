@@ -1,0 +1,222 @@
+/* PÁGINA DO JOGO — PADRÃO STEAM */
+
+.jogo {
+    min-height: 100vh;
+    padding: 70px 10%;
+
+    background:
+        linear-gradient(to bottom, #1b2838 0%, #101822 100%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.jogo-content {
+    width: 100%;
+    max-width: 1200px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+
+    padding: 35px;
+
+    background: #16202d;
+
+    border: 1px solid #2a475e;
+    border-radius: 4px;
+
+    transition: 0.2s ease;
+}
+
+.jogo-content:hover {
+    border-color: #3b6a8a;
+}
+
+.jogo-info {
+    flex: 1;
+}
+
+.jogo h1 {
+    font-size: clamp(40px, 5vw, 58px);
+    margin-bottom: 22px;
+
+    color: #ffffff;
+    line-height: 1.1;
+}
+
+.jogo p {
+    font-size: 17px;
+    line-height: 1.8;
+
+    color: #dbe9f3;
+
+    margin-bottom: 30px;
+
+    max-width: 650px;
+}
+
+/* BOTÃO */
+
+.jogo button {
+    padding: 13px 24px;
+
+    border: none;
+    border-radius: 3px;
+
+    background:
+        linear-gradient(to bottom, #66c0f4, #417a9b);
+
+    color: #ffffff;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.jogo button:hover {
+    background:
+        linear-gradient(to bottom, #7ed0ff, #4c8fb4);
+}
+
+/* IMAGEM */
+
+.jogo-imagem {
+    flex: 1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.jogo-imagem img {
+    width: 100%;
+    max-width: 500px;
+
+    border-radius: 4px;
+
+    border: 1px solid #2a475e;
+
+    transition: 0.25s ease;
+}
+
+.jogo-imagem img:hover {
+    transform: scale(1.02);
+    border-color: #66c0f4;
+}
+
+/* RESPONSIVO */
+
+@media (max-width: 900px) {
+
+    .jogo {
+        padding: 60px 20px;
+    }
+
+    .jogo-content {
+        flex-direction: column;
+        text-align: center;
+
+        padding: 25px;
+    }
+
+    .jogo-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .jogo h1 {
+        font-size: 42px;
+    }
+
+    .jogo p {
+        max-width: 100%;
+    }
+
+    .jogo-imagem img {
+        max-width: 100%;
+    }
+}
+
+/*====================================
+            PÁGINA SOBRE
+=====================================*/
+
+.sobre-container{
+    width: 80%;
+    max-width: 1100px;
+    margin: 40px auto;
+}
+
+.sobre-card{
+    background: var(--bg-card);
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    padding: 35px;
+    box-shadow: var(--shadow);
+    line-height: 1.8;
+}
+
+.sobre-card h2{
+    color: var(--border-gold);
+    margin-bottom: 18px;
+    font-size: 28px;
+}
+
+.sobre-card h3{
+    color: var(--text-secondary);
+    margin: 30px 0 10px;
+}
+
+.sobre-card p{
+    color: var(--text-primary);
+    text-align: justify;
+}
+
+.sobre-grid{
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+    gap: 20px;
+}
+
+.sobre-item{
+    background: rgba(0,0,0,.25);
+    border: 1px solid var(--border);
+    padding: 20px;
+    border-radius: 6px;
+    transition: var(--transition);
+}
+
+.sobre-item:hover{
+    border-color: var(--border-gold);
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-gold);
+}
+
+.sobre-item h4{
+    color: var(--border-gold);
+    margin-bottom: 12px;
+}
+
+.sobre-item p{
+    color: var(--text-primary);
+}
+
+@media(max-width:700px){
+
+    .sobre-container{
+        width:90%;
+    }
+
+    .sobre-card{
+        padding:20px;
+    }
+
+}

@@ -1,0 +1,800 @@
+/* =========================
+   RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+:root {
+    /* NOVA PALETA DE CORES: YU-GI-OH THEME */
+    --bg-primary: #65e6ef;       /* Preto cósmico profundo */
+    --bg-secondary: #14121f;     /* Roxo escuro místico */
+    --bg-card: #1c1512;          /* Marrom-esuro clássico do verso das cartas */
+
+    --border: #3d2f1d;           /* Bronze envelhecido */
+    --border-gold: #d4af37;      /* Ouro Relíquia do Milênio */
+    --gold-glow: #ffcc00;        /* Brilho de carta Rara/Holográfica */
+
+    --text-primary: #f3e9dc;     /* Marfim/Branco suave */
+    --text-secondary: #d4af37;   /* Dourado para sub-títulos */
+    --text-muted: #8a7b6a;       /* Bronze apagado para detalhes */
+
+    --gold: #d4af37;
+    --gold-hover: #fff3a8;
+
+    --ruby: #9e2a2b;             /* Vermelho Atributo (PYRO/DIVINE) */
+    --ruby-dark: #541012;
+
+    /* SOMBRAS MÍSTICAS */
+    --shadow: 0 8px 32px rgba(0, 0, 0, 0.7);
+    --shadow-gold: 0 0 15px rgba(212, 175, 55, 0.4);
+
+    /* TRANSIÇÕES */
+    --transition: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* =========================
+   BODY
+========================= */
+
+body {
+    min-height: 100vh;
+    width: 100%;
+
+    /* Gradiente vertical que lembra o design das caixas de Yu-Gi-Oh! */
+    background:
+        linear-gradient(to bottom,
+            var(--bg-secondary) 0%,
+            var(--bg-primary) 100%);
+
+    color: var(--text-primary);
+
+    font-family:
+        "Cinzel", 
+        "Times New Roman",
+        "Segoe UI",
+        serif; /* Modificado para serif para dar um tom mais antigo/mitológico */
+
+    overflow-x: hidden;
+}
+
+#root {
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+}
+
+/* =========================
+   TOPBAR
+========================= */
+
+.topbar {
+    min-height: 36px;
+    background: var(--bg-primary);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 18px;
+    padding: 0 10%;
+}
+
+.topbar a {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 12px;
+    transition: var(--transition);
+}
+
+.topbar a:hover {
+    color: var(--border-gold);
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+    height: 78px;
+    background: rgba(10, 11, 16, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 2px solid var(--border-gold); /* Linha dourada marcante */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10%;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+.logo {
+    font-size: 30px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    color: var(--border-gold);
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.6);
+    user-select: none;
+}
+
+.logo span {
+    color: var(--text-primary);
+    text-shadow: none;
+}
+
+/* =========================
+   NAV
+========================= */
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+nav a {
+    position: relative;
+    text-decoration: none;
+    color: var(--text-primary);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: var(--transition);
+}
+
+nav a:hover {
+    color: var(--gold-hover);
+}
+
+nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 0%;
+    height: 2px;
+    background: var(--border-gold);
+    box-shadow: 0 0 8px var(--gold-glow);
+    transition: var(--transition);
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* =========================
+   BOTÕES
+========================= */
+
+.btn-nav,
+.cta,
+button {
+    border: 1px solid var(--border-gold);
+    cursor: pointer;
+    border-radius: 4px; /* Bordas levemente mais retas/clássicas */
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: var(--transition);
+}
+
+/* HEADER BUTTON */
+.btn-nav {
+    padding: 10px 18px;
+    background:
+        linear-gradient(to bottom,
+            var(--ruby),
+            var(--ruby-dark));
+    color: white;
+    font-size: 13px;
+}
+
+.btn-nav:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 0 10px rgba(158, 42, 43, 0.6);
+    filter: brightness(1.2);
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 75vh;
+    padding: 90px 10%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 2px solid var(--border-gold);
+    
+    /* Background alterado para uma textura mística escura de constelações/magia */
+    background:
+        linear-gradient(
+            rgba(10, 11, 16, 0.85),
+            rgba(20, 18, 31, 0.95)
+        ),
+        url("https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=1600&auto=format&fit=crop")
+        center/cover no-repeat;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at top right,
+            rgba(214, 175, 55, 0.15),
+            transparent 45%);
+}
+
+.hero-content {
+    max-width: 700px;
+    position: relative;
+    z-index: 2;
+    animation: fadeUp 0.8s ease;
+}
+
+.hero h1 {
+    font-size: clamp(38px, 5vw, 64px);
+    color: var(--border-gold);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    line-height: 1.1;
+    margin-bottom: 24px;
+}
+
+.hero p {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #e3dec3;
+    max-width: 620px;
+    margin-bottom: 34px;
+}
+
+/* CTA */
+.cta {
+    padding: 15px 32px;
+    background:
+        linear-gradient(to bottom,
+            var(--gold-hover),
+            #947419);
+    color: #1c1512; /* Texto escuro contrastando no botão dourado */
+    font-size: 14px;
+    font-weight: 900;
+    box-shadow: var(--shadow), var(--shadow-gold);
+}
+
+.cta:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow), 0 0 20px var(--gold-glow);
+    filter: brightness(1.1);
+}
+
+/* =========================
+   CATEGORIAS
+========================= */
+
+.categorias {
+    padding: 24px 10%;
+    border-bottom: 1px solid var(--border);
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.categorias-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.categorias-container a {
+    text-decoration: none;
+    color: var(--text-primary);
+    background: #2a2118;
+    border: 1px solid var(--border);
+    padding: 10px 18px;
+    border-radius: 4px; /* Quadrado estilizado estilo carta */
+    font-size: 14px;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.categorias-container a:hover {
+    color: #fff;
+    border-color: var(--border-gold);
+    background: #3d2f1d;
+    box-shadow: var(--shadow-gold);
+    transform: translateY(-2px);
+}
+
+/* =========================
+   SECTIONS
+========================= */
+
+.games,
+.ofertas,
+.generos {
+    padding: 70px 10%;
+}
+
+.games h2,
+.ofertas h2,
+.generos h2 {
+    font-size: 28px;
+    color: var(--border-gold);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 36px;
+    padding-left: 14px;
+    border-left: 4px solid var(--border-gold);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+/* =========================
+   GAME GRID
+========================= */
+
+.game-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 30px; /* Aumentado o espaço para acomodar o brilho dos cards */
+}
+
+/* =========================
+   GAME CARD (ESTILO CARTA REAL DE YU-GI-OH)
+========================= */
+
+.game-card {
+    background: var(--bg-card);
+    border: 2px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    transition: var(--transition);
+    cursor: pointer;
+    padding: 10px; /* Padding interno simulando a borda física da carta */
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.6);
+}
+
+.game-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: var(--border-gold);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.8), 0 0 20px rgba(214, 175, 55, 0.5);
+}
+
+/* IMAGE */
+.game-img {
+    height: 240px; /* Altura ajustada para proporção de cartas de YGO */
+    overflow: hidden;
+    border: 2px solid #000; /* Moldura interna da imagem */
+    background: #050505;
+}
+
+.game-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.5s ease;
+    display: block;
+}
+
+.game-card:hover .game-img img {
+    transform: scale(1.04);
+}
+
+/* INFO */
+.game-info {
+    padding: 12px 4px 4px 4px;
+    background: rgba(0,0,0,0.4); /* Fundo simulando a caixa de texto da carta */
+    margin-top: 8px;
+    border-radius: 4px;
+    border: 1px solid rgba(214, 175, 55, 0.1);
+}
+
+.game-info h3 {
+    color: var(--text-primary);
+    font-size: 16px;
+    margin-bottom: 6px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.game-info p {
+    color: #ffaa00; /* Cor de destaque para os status ATK/DEF */
+    font-size: 13px;
+    font-weight: 700;
+    font-family: monospace;
+}
+
+/* =========================
+   OFERTAS / PROMOÇÕES (Adaptado para Destaques Especiais)
+========================= */
+
+.oferta-banner {
+    background:
+        linear-gradient(
+            135deg,
+            #121321,
+            #0a0b10
+        );
+    border: 2px solid var(--border-gold);
+    border-radius: 8px;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    box-shadow: var(--shadow), var(--shadow-gold);
+}
+
+.oferta-info {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.desconto {
+    background: var(--ruby);
+    color: white;
+    font-size: 28px;
+    font-weight: 900;
+    padding: 12px 18px;
+    border-radius: 4px;
+    border: 1px solid var(--border-gold);
+}
+
+.oferta-info h3 {
+    font-size: 24px;
+    color: var(--border-gold);
+    margin-bottom: 8px;
+}
+
+.oferta-info p {
+    color: var(--text-primary);
+}
+
+.preco {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+}
+
+.preco-antigo {
+    color: #7a6e5d;
+    text-decoration: line-through;
+}
+
+.preco-novo {
+    color: var(--gold-glow);
+    font-size: 28px;
+    font-weight: bold;
+}
+
+/* =========================
+   GÊNEROS (Substituído por Tipos de Cards)
+========================= */
+
+.generos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 18px;
+}
+
+.genero-card {
+    background:
+        linear-gradient(
+            135deg,
+            #1c1512,
+            #2b201a
+        );
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 24px 16px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.genero-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--border-gold);
+    color: white;
+    box-shadow: var(--shadow-gold);
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    margin-top: auto;
+    background: var(--bg-primary);
+    border-top: 2px solid var(--border);
+    text-align: center;
+    padding: 30px 20px;
+    color: var(--text-muted);
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
+/* =========================
+   SCROLLBAR MÍSTICA
+========================= */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0a0b10;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border: 2px solid #0a0b10;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--border-gold);
+}
+
+/* =========================
+   ANIMAÇÕES
+========================= */
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================
+   RESPONSIVO
+========================= */
+
+@media (max-width: 900px) {
+
+    header {
+        height: auto;
+        flex-direction: column;
+        justify-content: center;
+        gap: 18px;
+        padding: 20px;
+    }
+
+    nav {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 18px;
+    }
+
+    .hero,
+    .games,
+    .ofertas,
+    .generos,
+    .categorias {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .hero {
+        min-height: 60vh;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .hero-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .oferta-banner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .preco {
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .topbar {
+        justify-content: center;
+        flex-wrap: wrap;
+        padding: 10px;
+    }
+
+    .hero h1 {
+        font-size: 34px;
+    }
+
+    .games h2,
+    .ofertas h2,
+    .generos h2 {
+        font-size: 24px;
+    }
+
+    .desconto {
+        font-size: 22px;
+    }
+
+    .oferta-info {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+}
+
+/*====================================================
+                    CRUD MONSTROS E INPUTS
+=====================================================*/
+
+/* Centraliza e limita o tamanho do formulário para não esticar na tela */
+.crud-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza os elementos internamente */
+    gap: 16px;
+    width: 100%;
+    max-width: 500px; /* Tamanho ideal e compacto para os inputs */
+    margin: 30px auto; /* Centraliza o formulário na página */
+    padding: 30px;
+    background: rgba(28, 21, 18, 0.85); /* var(--bg-card) com leve transparência */
+    border: 2px solid var(--border);
+    border-radius: 6px;
+    box-shadow: var(--shadow);
+    position: relative;
+}
+
+/* Moldura interna decorativa estilizando as quinas */
+.crud-form::before {
+    content: "";
+    position: absolute;
+    inset: 4px;
+    border: 1px solid rgba(214, 175, 55, 0.15); /* Linha dourada sutil interna */
+    pointer-events: none;
+    border-radius: 4px;
+}
+
+/* Título do CRUD */
+.crud-title {
+    text-align: center;
+    color: var(--border-gold);
+    font-family: "Cinzel", serif;
+    margin-top: 40px;
+    margin-bottom: 10px;
+    font-size: 32px;
+    letter-spacing: 3px;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+}
+
+/* INPUTS DESIGN PROFISSIONAL E COMPACTO */
+.crud-form input {
+    width: 100%;
+    max-width: 100%; /* Respeita o limite do contêiner pai */
+    padding: 12px 16px;
+    border-radius: 4px;
+    border: 1px solid var(--border); /* Base bronze envelhecido */
+    background: #0f0a08; /* Fundo escuro terroso */
+    color: var(--text-primary);
+    font-size: 14px;
+    font-family: inherit;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.8); /* Profundidade interna */
+    transition: var(--transition);
+}
+
+/* Efeito de ativação místico/holográfico ao focar no input */
+.crud-form input:focus {
+    outline: none;
+    border-color: var(--border-gold);
+    background: #140d0a;
+    box-shadow: 
+        inset 0 1px 3px rgba(0, 0, 0, 0.9),
+        0 0 12px rgba(255, 204, 0, 0.35); /* Brilho dourado refinado */
+}
+
+/* Estilização do Placeholder */
+.crud-form input::placeholder {
+    color: var(--text-muted);
+    opacity: 0.6;
+    font-style: italic;
+    letter-spacing: 0.5px;
+}
+
+/* CONTEINER DOS BOTÕES */
+.crud-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* BOTÕES REFINADOS */
+.crud-btn {
+    flex: 1;
+    max-width: 160px; /* Impede que os botões fiquem gigantes */
+    padding: 12px;
+    font-size: 13px;
+    border: 1px solid var(--border-gold);
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: var(--transition);
+    
+    /* Gradiente dourado combinando com o tema Hero/CTA */
+    background: linear-gradient(to bottom, var(--gold-hover), #947419);
+    color: #1c1512; 
+}
+
+.crud-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px var(--gold-glow);
+    filter: brightness(1.1);
+}
+
+/* Variação do botão de Excluir */
+.crud-delete {
+    background: linear-gradient(to bottom, var(--ruby), var(--ruby-dark));
+    color: #ffffff;
+    border-color: #b02925;
+}
+
+.crud-delete:hover {
+    box-shadow: 0 0 15px rgba(158, 42, 43, 0.7);
+    filter: brightness(1.2);
+}
+
+/* GRID DO CRUD */
+.crud-grid {
+    margin: 40px 10%;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 600px) {
+    .crud-form {
+        margin: 20px;
+        padding: 20px;
+    }
+
+    .crud-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .crud-btn {
+        max-width: 100%;
+        width: 100%;
+    }
+}
