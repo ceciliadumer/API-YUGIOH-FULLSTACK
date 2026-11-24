@@ -109,7 +109,7 @@ ou
 npm start
 ```
 
-### Resultado Esperado
+### Resultado Esperado --
 
 ```txt
 Conectado ao banco de dados com sucesso.
