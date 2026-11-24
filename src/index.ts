@@ -58,5 +58,5 @@ async function iniciar() {
     console.error("Erro ao iniciar o servidor:", error);
   }
 }
-
+module.exports = app;
 iniciar();
