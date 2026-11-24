@@ -1,6 +1,15 @@
-import { Router } from "express";
+import { NextResponse } from "next/server";
 import cartaController from "../../../src/controller/carta.routes.controller";
 
-const router = Router();
+export async function GET() {
+    try {
+        const cartas = await cartaController.listarCartas();
 
-router.get("/", cartaController.mostrarCartas);
+        return NextResponse.json(cartas);
+    } catch (error) {
+        return NextResponse.json(
+            { erro: "Erro ao buscar cartas" },
+            { status: 500 }
+        );
+    }
+}

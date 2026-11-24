@@ -8,6 +8,13 @@ async function mostrarCartas(req: Request, res: Response) {
     return res.json(cartas.map(carta => carta.toPersistence()));
 }
 
+// MÉTODO DE FUNÇÃO USANDO O NEXT.JS 
+async function listarCartas() {
+    const cartas = await cartaService.listar();
+
+    return cartas.map(carta => carta.toPersistence());
+}
+
 async function buscarCartaIndice(req: Request, res: Response) {
     const carta = await cartaService.buscarPorId(Number(req.params.id));
     if (!carta) {
@@ -91,4 +98,4 @@ function validate(carta: Carta) {
     }
 }
 
-export default { mostrarCartas, buscarCartaIndice, criar, atualizar, remover, pesquisar, pesquisarCartaPorColecao };
+export default { mostrarCartas, buscarCartaIndice, criar, atualizar, remover, pesquisar, pesquisarCartaPorColecao, listarCartas };
