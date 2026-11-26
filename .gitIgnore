@@ -1,15 +1,43 @@
-# Ignorar arquivos compilados
-*.class
-*.exe
-*.dll
+# Dependencies
+node_modules
+/.pnp
+.pnp.js
 
-# Ignorar pastas de dependências
-node_modules/
+# Testing
+/coverage
 
+# Next.js
+/.next/
+/out/
 
-# Ignorar arquivos de sistema/OS
+# Production
+/build
+
+# Misc
 .DS_Store
-Thumbs.db
+*.pem
 
-# Ignorar arquivos de configuração sensíveis ou de ambiente
+# Debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Local env files
 .env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Vercel
+.vercel
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+Thumbs.db
