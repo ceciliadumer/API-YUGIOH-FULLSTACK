@@ -9,7 +9,7 @@ interface Product {
   description: string
 }
 
-export  function ProductsPage() {
+/* export  function ProductsPage() {
   const [products, setProducts] = useState<Product[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -46,17 +46,19 @@ export  function ProductsPage() {
     </main>
   )
 }
-
+ */
 
 interface NasaData {
   type: string
-  totalItems: number //obrigatório
-  member: [] //obrigatório
-} 
+  totalItems: number
+  member: {
+    name: string
+  }[]
+}
 
 
-export default function NasaPage() {
-  const [nasaData, setNasaData] = useState<NasaData[]>([])
+export default function ProductsPage() {
+  const [nasaData, setNasaData] = useState<NasaData | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
@@ -74,21 +76,25 @@ export default function NasaPage() {
       })
   }, [])
 
-  if (loading) return <div className="p-8">Loading NASA data...</div>
-  if (error) return <div className="p-8 text-red-500">Error: {error}</div>
+
+  if (loading) return <div>Loading...</div>
+  if (error) return <div>Error: {error}</div>
+  if (!nasaData) return <div>No data found.</div>
 
   return (
     <main className="p-8">
-      <h1 className="text-3xl font-bold mb-8">NASA Data</h1>
+      <h1 className="text-3xl font-bold mb-8">
+        {nasaData.type}
+      </h1>
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {nasaData.map((data) => (
-          <div key={data.type} className="border rounded-lg p-4">
-            <h2 className="font-semibold text-lg">{data.type}</h2>
-            <p className="text-sm text-gray-600 my-2">{data.totalItems} items</p>
-            <p className="font-bold text-lg">${data.member}</p>
+        {nasaData.member.map((satellite, index) => (
+          <div key={index} className="border rounded-lg p-4">
+            <h2 className="font-semibold text-lg">
+              {satellite.name}
+            </h2>
           </div>
         ))}
       </div>
     </main>
-  )
-}
+  )}
